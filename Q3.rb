@@ -1,3 +1,4 @@
+# Tried to use ASCII vlaue to print the output
 
 # x=122
 
@@ -6,8 +7,9 @@
   
 #end
 
-for a in 122.downto(97)
-  puts a.chr
-end
+
+for var in 122.downto(97); puts var.chr ;end  # Range works in ascending order hence used .downto method
+  
+
 
 

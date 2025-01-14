@@ -2,7 +2,7 @@
 mobile_number_regex = /^[0-9]{10}$/
 
 
-email_regex = /^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,}$/
+email_regex = /^[a-zA-Z0-9.]+@[a-zA-Z]+\.[a-zA-Z]{2,}$/
 
 
 name_regex = /^[A-Za-z ]+$/
