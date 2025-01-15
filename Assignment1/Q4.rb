@@ -1,3 +1,6 @@
+# Question : Regex for mobile number, email address, name, gender(M / F) and amount
+
+
 
 mobile_number_regex = /^[0-9]{10}$/
 

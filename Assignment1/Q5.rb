@@ -1,3 +1,10 @@
+# Question : Write a program to find IP address class.
+
+
+
+
+
+
 def find_ip_class(ip)
   # Split the IP address into its octets
   first_octet = ip.split('.')[0].to_i
