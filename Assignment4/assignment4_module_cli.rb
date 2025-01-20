@@ -16,7 +16,7 @@
 
 
 
-module Loan_check
+module LoanCheck
 
     def loan_by_imf?
       @gdp < 200_000 && @status_of_country == 'developing'
@@ -30,7 +30,7 @@ module Loan_check
   end
   
   
-  module United_nations_seat_check
+  module UnitedNationsSeatCheck
   
     def united_nations_seat?
       @gdp > 1_000_000 && @army_strength > 500_000
@@ -39,7 +39,7 @@ module Loan_check
   end
   
   
-  module War_win_check
+  module WarWinCheck
   
   
     def war_win?
@@ -50,12 +50,12 @@ module Loan_check
   
   
   
-  class Allchecks
+  class CountryPresentStatus
   
   
-    include Loan_check
-    include United_nations_seat_check
-    include War_win_check
+    include LoanCheck
+    include UnitedNationsSeatCheck
+    include WarWinCheck
   
   
   
@@ -114,7 +114,7 @@ module Loan_check
   
   
 #   country1 = Allchecks.new('INDIA',12346789,100_000,28,1046476,'developing')
-  country2 = Allchecks.new(country_name, population, gdp, states, army_strength, status_of_country)
+  country2 = CountryPresentStatus.new(country_name, population, gdp, states, army_strength, status_of_country)
   
   
 #   country1.analyze
