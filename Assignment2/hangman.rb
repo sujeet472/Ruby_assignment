@@ -2,10 +2,13 @@
 
 # DEVELOP A HANG MAN GAME
 
-def initialize_game(level, decide_level)
-  if decide_level.key?(level)
+def initialize_game(level, word_set)
+  puts "The entered level is : #{level}"
+  if level in 1..5
+    # word_data = passed_word
+
     puts "Your level is #{level}"
-    word_data = decide_level[level].sample
+    word_data = word_set.sample
     word_to_be_guessed = word_data[:word]
     hint = word_data[:hint]
     {
@@ -22,6 +25,45 @@ def initialize_game(level, decide_level)
     nil
   end
 end
+
+def decide_level(level)
+  case level
+  when 1
+    word_data = [
+      { word: 'house', hint: 'The place where a person lives' },
+      { word: 'tree', hint: 'A tall plant with a trunk and branches' },
+      { word: 'frog', hint: 'A small amphibian that hops' }
+    ]
+  when 2
+    word_data = [
+      { word: 'curd', hint: 'A dairy product made from milk' },
+      { word: 'rock', hint: 'A solid mineral material' },
+      { word: 'milk', hint: 'A white liquid produced by mammals' }
+    ]
+  when 3
+    word_data = [
+      { word: 'blue', hint: 'The color of the sky' },
+      { word: 'fire', hint: 'A combustion that produces heat and light' },
+      { word: 'lion', hint: 'The king of the jungle' }
+    ]
+
+  when 4
+    word_data = [
+      { word: 'maze', hint: 'A network of paths and hedges' },
+      { word: 'clay', hint: 'A natural earthy material' },
+      { word: 'coal', hint: 'A combustible black rock' }
+    ]
+  when 5
+    word_data = [
+      { word: 'void', hint: 'A completely empty space' },
+      { word: 'zest', hint: 'Great enthusiasm and energy' },
+      { word: 'knot', hint: 'A fastening made by tying' }
+    ]
+  end
+
+  return word_data
+end
+
 
 def play_game(game_state)
   puts "READY TO ROCKSSS?!!.. LET'S BEGIN"
@@ -90,37 +132,38 @@ end
 
 # Main program
 
-decide_level = {
-  1 => [
-    { word: 'house', hint: 'The place where a person lives' },
-    { word: 'tree', hint: 'A tall plant with a trunk and branches' },
-    { word: 'frog', hint: 'A small amphibian that hops' }
-  ],
-  2 => [
-    { word: 'curd', hint: 'A dairy product made from milk' },
-    { word: 'rock', hint: 'A solid mineral material' },
-    { word: 'milk', hint: 'A white liquid produced by mammals' }
-  ],
-  3 => [
-    { word: 'blue', hint: 'The color of the sky' },
-    { word: 'fire', hint: 'A combustion that produces heat and light' },
-    { word: 'lion', hint: 'The king of the jungle' }
-  ],
-  4 => [
-    { word: 'maze', hint: 'A network of paths and hedges' },
-    { word: 'clay', hint: 'A natural earthy material' },
-    { word: 'coal', hint: 'A combustible black rock' }
-  ],
-  5 => [
-    { word: 'void', hint: 'A completely empty space' },
-    { word: 'zest', hint: 'Great enthusiasm and energy' },
-    { word: 'knot', hint: 'A fastening made by tying' }
-  ]
-}
+# decide_level = {
+#   1 => [
+#     { word: 'house', hint: 'The place where a person lives' },
+#     { word: 'tree', hint: 'A tall plant with a trunk and branches' },
+#     { word: 'frog', hint: 'A small amphibian that hops' }
+#   ],
+#   2 => [
+#     { word: 'curd', hint: 'A dairy product made from milk' },
+#     { word: 'rock', hint: 'A solid mineral material' },
+#     { word: 'milk', hint: 'A white liquid produced by mammals' }
+#   ],
+#   3 => [
+#     { word: 'blue', hint: 'The color of the sky' },
+#     { word: 'fire', hint: 'A combustion that produces heat and light' },
+#     { word: 'lion', hint: 'The king of the jungle' }
+#   ],
+#   4 => [
+#     { word: 'maze', hint: 'A network of paths and hedges' },
+#     { word: 'clay', hint: 'A natural earthy material' },
+#     { word: 'coal', hint: 'A combustible black rock' }
+#   ],
+#   5 => [
+#     { word: 'void', hint: 'A completely empty space' },
+#     { word: 'zest', hint: 'Great enthusiasm and energy' },
+#     { word: 'knot', hint: 'A fastening made by tying' }
+#   ]
+# }
 
 current_level = 1
 loop do
-  game_state = initialize_game(current_level, decide_level)
+  passed_word = decide_level(current_level)
+  game_state = initialize_game(current_level, passed_word)
   break unless game_state && play_game(game_state)
 
   if current_level < 5
