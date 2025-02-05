@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_05_060926) do
+ActiveRecord::Schema[7.2].define(version: 2025_02_05_072931) do
   create_table "account_transactions", primary_key: "transaction_id", id: { type: :string, limit: 20 }, force: :cascade do |t|
     t.string "user_card_id", limit: 20
     t.datetime "transaction_date", null: false
@@ -30,8 +30,10 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_05_060926) do
     t.string "branch_email", limit: 100, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "discarded_at"
     t.index ["branch_email"], name: "index_branches_on_branch_email", unique: true
     t.index ["branch_phone"], name: "index_branches_on_branch_phone", unique: true
+    t.index ["discarded_at"], name: "index_branches_on_discarded_at"
   end
 
   create_table "credit_cards", primary_key: "credit_card_id", id: { type: :string, limit: 20 }, force: :cascade do |t|
